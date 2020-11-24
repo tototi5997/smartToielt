@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import './index.less'
 import { Menu } from 'antd';
+import {Link} from 'react-router-dom'
 
 const { SubMenu } = Menu;
 export default class NavLeft extends Component{
@@ -17,9 +18,9 @@ export default class NavLeft extends Component{
                     <SubMenu
                     key="sub1"
                     title='公厕状态监测'>
-                    <Menu.Item key="1">环境监测</Menu.Item>
-                    <Menu.Item key="2">公厕地图</Menu.Item>
-                    <Menu.Item key="3">清扫提醒</Menu.Item>
+                    <Menu.Item key="1"><Link to={{pathname:'/home/homepage'}}>环境监测</Link></Menu.Item>
+                    <Menu.Item key="2"><Link to={{pathname:'/home/map'}}>公厕地图</Link></Menu.Item>
+                    <Menu.Item key="3"><Link to={{pathname:'/home/remind'}}>清扫提醒</Link></Menu.Item>
                     </SubMenu>
 
 

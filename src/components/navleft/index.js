@@ -7,7 +7,7 @@ const { SubMenu } = Menu;
 export default class NavLeft extends Component{
     render(){
         return(
-            <div >
+            <div>
                   <Menu
                     theme='dark'
                     style={{ width: 'auto' ,minHeight:820,overflow:"auto"}}
@@ -25,7 +25,7 @@ export default class NavLeft extends Component{
 
 
                     <SubMenu key="sub2" title="公厕管理">
-                    <Menu.Item key="4">设备保修</Menu.Item>
+                    <Menu.Item key="4"><Link to={{pathname:'/home/equipmentfix'}}>设备保修</Link></Menu.Item>
                     <Menu.Item key="5">耗材申请</Menu.Item>
                     <Menu.Item key="6">公告管理</Menu.Item>
                     </SubMenu>

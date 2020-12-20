@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import {HashRouter as Router ,Route , Switch,Redirect} from 'react-router-dom'
+import FixEquipment from '../pages/equipment_fix'
 import Home from '../pages/home'
 import HomePage from '../pages/homeIndex'
 import MapToielt from '../pages/mapToielt'
@@ -12,7 +13,7 @@ export default class IRouter extends Component{
             <Router>
                 
                     <Route path='/login' component={Login}></Route>
-                    <Redirect from='/' to='/login'></Redirect>
+                    <Redirect from='/' to='/home/remind'></Redirect>
                     <Route path='/home' render={()=>{
                         return(
                             <Home>
@@ -20,6 +21,7 @@ export default class IRouter extends Component{
                                     <Route path='/home/homepage' component={HomePage}></Route>
                                     <Route path='/home/map' component={MapToielt}></Route>
                                     <Route path='/home/remind'component={Remind}></Route>
+                                    <Route path='/home/equipmentfix' component={FixEquipment}></Route>
                                 </Switch>
                             </Home>
                         )

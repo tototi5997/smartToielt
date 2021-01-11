@@ -10,8 +10,7 @@ export default class NavLeft extends Component{
             <div>
                   <Menu
                     theme='dark'
-                    style={{ width: 'auto' ,minHeight:820,overflow:"auto"}}
-                    defaultSelectedKeys={['1']}  
+                    style={{ width: 'auto' ,minHeight:820,overflow:"auto"}} 
                     defaultOpenKeys={['sub1','sub2']}
                     mode="inline"
                 >
@@ -26,8 +25,8 @@ export default class NavLeft extends Component{
 
                     <SubMenu key="sub2" title="公厕管理">
                     <Menu.Item key="4"><Link to={{pathname:'/home/equipmentfix'}}>设备保修</Link></Menu.Item>
-                    <Menu.Item key="5">耗材申请</Menu.Item>
-                    <Menu.Item key="6">公告管理</Menu.Item>
+                    <Menu.Item key="5"><Link to={{pathname:'/home/sourceapply'}}>耗材申请</Link></Menu.Item>
+                    <Menu.Item key="6"><Link to={{pathname:'/home/notice'}}>公告管理</Link></Menu.Item>
                     </SubMenu>
 
                     <SubMenu

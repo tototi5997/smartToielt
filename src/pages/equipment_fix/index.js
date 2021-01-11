@@ -1,6 +1,6 @@
-import { Card,Form, Input,Button, Select,Tooltip, Table,Modal, message } from 'antd'
+import { Card,Form, Input,Button, Select,Tooltip, Table,Modal, message,Checkbox } from 'antd'
 import React,{Component} from 'react'
-import { SearchOutlined,BarsOutlined } from '@ant-design/icons';
+import { SearchOutlined,BarsOutlined,CarryOutOutlined,CheckOutlined,CloseOutlined } from '@ant-design/icons';
 import columns from './index.config'
 import Axios from '../../utils/axios'
 import './index.less'
@@ -13,6 +13,7 @@ class FixEquipment extends Component{
     visible:false
   }
   render(){
+    const plainOptions = ['水龙头', '洗手池', '储水器','干手机','红外扫描仪','空气感应器'];
     const {selectedRowKeys} = this.state;
     const rowSelection = {
       type:'radio',
@@ -47,6 +48,9 @@ class FixEquipment extends Component{
             <FormItem name='fixSubmit_btn'>
               <Button type='primary' onClick={this.handleShowModal}><BarsOutlined />设备报修</Button>
             </FormItem>
+            <FormItem>
+              <Button type='primary'><CarryOutOutlined />PDF导出</Button>
+            </FormItem>
           </Form>
           <Table
           columns={columns}
@@ -68,7 +72,27 @@ class FixEquipment extends Component{
         title='设备报修'
         visible={this.state.visible}
         onCancel={()=>{this.setState({visible:false})}}
-        >test</Modal>
+        footer={[
+          <Button><CheckOutlined />确认提交</Button>,
+          <Button><CloseOutlined />取消提交</Button>
+        ]}
+        >
+        <Form>
+          <FormItem
+          label='厕所ID'
+          name=''
+          rules={[{required:true,message:'此项为必填项！'}]}
+          ><Input /></FormItem>
+          <FormItem label='选择报修'>
+            <Checkbox.Group options={plainOptions}/>
+          </FormItem>
+          <FormItem
+          label='申请人'
+          name=''
+          rules={[{required:true,message:'此项为必填项！'}]}
+          ><Input /></FormItem>
+        </Form>
+        </Modal>
       </div>
     );
   }
@@ -78,7 +102,7 @@ class FixEquipment extends Component{
       url:'/equipment_fix'
     }).then((res,rej)=>{
       if(res.code == '0'){
-        console.log(res)
+        // console.log(res)
         this.setState({
             dataSource:res.result.list.map((item,index)=>{
             item.key = index;
@@ -99,4 +123,5 @@ class FixEquipment extends Component{
     } 
   }
 }
+
 export default FixEquipment;

@@ -27,7 +27,6 @@ const MapToielt = () => {
           plugins={plugins}
           >
             { renderPolygon() }
-            {/* <Marker position={singelmarker}/> */}
             {reanderMarkers()}
           </Map>
         </div>

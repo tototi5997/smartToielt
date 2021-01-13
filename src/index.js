@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Home from './pages/home/index'
-import IRouter from './router/index'
+// import Home from './pages/home/index'
+// import IRouter from './router/index'
 
 ReactDOM.render(
-    <IRouter />,
+    <App />,
   document.getElementById('root')
 );
 

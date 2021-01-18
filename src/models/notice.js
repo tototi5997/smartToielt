@@ -1,4 +1,4 @@
-import { flow, types } from 'mobx-state-tree'
+import { types } from 'mobx-state-tree'
 
 export const Notice = types.model("Notice",{
   // 公告的id

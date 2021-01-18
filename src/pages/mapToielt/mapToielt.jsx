@@ -70,8 +70,10 @@ const reanderMarkers = () => {
   const markersList = []
   for(let i in markerPath){
     markerPath[i].map((item, index) => {
+      console.log(item, 'item')
       markersList.push(<Marker 
-        visible={mapdetail.isMarkerVisable} 
+        visible={mapdetail.isMarkerVisable}
+        key={item.toString()} 
         position={item}>
           <div style={markerStyle}/>
         </Marker>)

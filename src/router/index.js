@@ -9,6 +9,7 @@ import Login from '../pages/login'
 import SourceApply from '../pages/source_apply'
 import Notice from '../pages/notice'
 import PrivateRoute from '../components/privateRoute/index'
+import User from '../pages/user'
 
 export default class IRouter extends Component{
     render(){
@@ -26,6 +27,7 @@ export default class IRouter extends Component{
                                 <Route path='/home/equipmentfix' component={FixEquipment}></Route>
                                 <Route path='/home/sourceapply' component={SourceApply}></Route>
                                 <Route path='/home/notice' component={Notice}></Route>
+                                <Route path='/home/user' component={User}></Route>
                             </Switch>
                         </Home>
                     )

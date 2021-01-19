@@ -6,7 +6,8 @@ export const User = types.model('User',{
   username:types.optional(types.string, ''),
   // 用户状态:默认logout
   userstate:types.optional(types.enumeration('userState', ['login', 'logout']), 'logout'),
-
+  //  登出提示框显示状态
+  isLogoutModalVisable:false,
 })
 .actions(self => {
   // 用户登录
@@ -19,8 +20,18 @@ export const User = types.model('User',{
     self.username = ''
     self.userstate = 'logout'
   }
+  // 显示登出提示框
+  const showLogoutModal = () => {
+    self.isLogoutModalVisable = true
+  }
+  // 关闭提示框
+  const closeLogoutModal = () => {
+    self.isLogoutModalVisable = false
+  }
   return{
     userLogin,
-    userLogout
+    userLogout,
+    showLogoutModal,
+    closeLogoutModal
   }
 })

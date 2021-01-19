@@ -2,11 +2,30 @@ import React from 'react'
 import {Card, Avatar} from 'antd'
 import w from '../../models/root'
 import { observer } from 'mobx-react-lite'
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons'
+import { EditOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons'
+import cookie from 'react-cookies'
+import LogoutModal from './logout'
 
 const {user} = w
 const { Meta } = Card
-const UserInfo = () => {
+
+
+const UserInfo = () => {  
+  const cookieuser = cookie.load('user')
+  // 登出
+  const asyncLogout = () => {
+    user.showLogoutModal()
+    return new Promise(resolve => {
+      cookie.remove('user')
+      const cookiestate = cookie.load('user')
+      resolve(cookiestate)
+    })
+  }
+  const userLogout = async () => {
+    cookie.loadAll()
+    await asyncLogout()
+    user.userLogout()
+  }
   return (
     <div style={{height:800,overflow:"auto"}}>
       <Card style={{margin:15}}>
@@ -21,16 +40,17 @@ const UserInfo = () => {
           actions={[
             <SettingOutlined key="setting" />,
             <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
+            <LogoutOutlined key="logout" onClick={userLogout}/>,
           ]}
         >
           <Meta
             avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-            title={user.username}
+            title={user.username || cookieuser}
             description="This is the description"
           />
         </Card>
       </Card>
+      <LogoutModal />
     </div>
   )
 }

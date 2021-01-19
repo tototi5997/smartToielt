@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button,Input,Form} from 'antd'
+import {Button,Input,Form,message} from 'antd'
 import {
   UserOutlined,
   LockOutlined
@@ -8,6 +8,7 @@ import {observer} from 'mobx-react-lite'
 import './index.less'
 import w from '../../models/root'
 import { useHistory } from 'react-router-dom'
+import cookie from 'react-cookies'
 
 // 注入user
 const {user} = w
@@ -31,12 +32,14 @@ const Login =()=>{
       const checkUser =(value) => {
         const username = value.userName
         if(value.userName === 'zhangqian'){
-          if(value.passWord === '123456'){
+          if(value.passWord === '1'){
+            message.success('登录成功！')
+            cookie.save('user', username, {path: '/'})
             user.userLogin(username)
             history.push('/home/homepage')
-            console.log(user.userstate)
           }
         }
+        else message.error('登录信息错误！')
       }
       
       return(

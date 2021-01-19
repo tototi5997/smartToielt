@@ -62,6 +62,7 @@
     "react": "^17.0.1",
     "react-amap": "^1.2.8",
     "react-app-polyfill": "^2.0.0",
+    "react-cookies": "^0.1.1",
     "react-dev-utils": "^11.0.0",
     "react-dom": "^17.0.1",
     "react-map": "^0.0.2",

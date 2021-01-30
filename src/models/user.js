@@ -8,6 +8,8 @@ export const User = types.model('User',{
   userstate:types.optional(types.enumeration('userState', ['login', 'logout']), 'logout'),
   //  登出提示框显示状态
   isLogoutModalVisable:false,
+  // 动态
+  userDynamic:types.optional(types.string, ''),
 })
 .actions(self => {
   // 用户登录

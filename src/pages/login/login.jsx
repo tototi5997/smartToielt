@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Button,Input,Form,message} from 'antd'
 import {
   UserOutlined,
@@ -13,6 +13,7 @@ import cookie from 'react-cookies'
 // 注入user
 const {user} = w
 const Login =()=>{
+
     // history用来做跳转
     let history = useHistory()
       const layout = {

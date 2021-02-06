@@ -36,7 +36,7 @@ const UserInfo = () => {
     user.userLogout()
   }
   // 渲染动态面板
-  const checkUserDynamic = () => {
+  const checkUserDynamic = () => { 
     let userDynamic = user.userDynamic
     userDynamic = ' ' ? <NoDynamic/> : userDynamic
     return userDynamic

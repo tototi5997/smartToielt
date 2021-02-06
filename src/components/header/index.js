@@ -17,15 +17,16 @@ export default class Headertop extends Component{
                       alt=''
                       />
                     </NavLink>
-                    <Badge className="infoicon" dot count={1}>
-                    <img 
-                      className="infoicon"
-                      id="hovericon"
-                      src='/icon/info.svg'
-                      alt=''
-                      />  
-                    </Badge>
-                                    
+                    <NavLink to='/home/alertinfo'>
+                      <Badge className="infoicon" dot count={1}>
+                        <img 
+                        className="infoicon"
+                        id="hovericon"
+                        src='/icon/info.svg'
+                        alt=''
+                        /> 
+                      </Badge>
+                    </NavLink>                
                 </div>
             </div>
         );

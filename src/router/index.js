@@ -12,6 +12,7 @@ import PrivateRoute from '../components/privateRoute/index'
 import User from '../pages/user'
 import AlertInfo from '../pages/alert-information/index'
 import Power from '../pages/power/index'
+import StuffRelation from '../pages/stuff-relation'
 
 export default class IRouter extends Component{
     render(){
@@ -32,6 +33,7 @@ export default class IRouter extends Component{
                                 <Route path='/home/user' component={User}></Route>
                                 <Route path='/home/alertinfo' component={AlertInfo}></Route>
                                 <Route path='/home/power' component={Power}></Route>
+                                <Route path='/home/stuffrelation' component={StuffRelation}></Route>
                             </Switch>
                         </Home>
                     )

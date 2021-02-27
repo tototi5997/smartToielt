@@ -2,14 +2,23 @@ import React from 'react'
 import { Card, Input, Form, Button, List, Avatar } from 'antd'
 import { observer } from 'mobx-react-lite'
 import w from '../../models/root'
+import c from 'classnames'
+import '../../common/common.less'
+import './notice.less'
+import CardTitle from '../../components/card-title'
+import {NotificationOutlined} from '@ant-design/icons'
 
 // 接入notice状态
 const { notice } = w
 const Notice =()=>{
     // console.log(notice.history)
     return(
-      <div style={{height:800,overflow:"auto"}}>
-        <Card style={{margin:15}} title='公告管理'>
+      <div className={c('outerdiv')}>
+        <Card className={c('innerCard')} title={<CardTitle
+        title="公告管理"
+        >
+          <NotificationOutlined />
+        </CardTitle>}>
           <Form>
             <Form.Item label= '当前展示公告'>
               <div onDoubleClick={notice.doubleClickCheck}>
@@ -27,18 +36,6 @@ const Notice =()=>{
               <Button onClick={notice.clearNotice}>取消发布</Button>
             </Form.Item>
             <Form.Item>
-              {/* <List
-                itemLayout='horizontal'
-                renderItem={item => (
-                  <List.Item>
-                    <List.Item.Meta 
-                      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                      title={'mocktitle'}
-                      description={notice.notice_detail}
-                    />
-                  </List.Item>
-                )}
-              /> */}
             </Form.Item>
           </Form>
         </Card>

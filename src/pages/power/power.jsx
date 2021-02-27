@@ -7,6 +7,7 @@ import { TeamOutlined, NodeIndexOutlined, SearchOutlined} from '@ant-design/icon
 import Axios from '../../utils/axios'
 import List from './list'
 import AuthList from './auth-list'
+import CardTitle from '../../components/card-title'
 
 
 // 筛选条件组件
@@ -71,10 +72,10 @@ const Power = () => {
     <div className="outerdiv warpdiv">
       <Card
       title={
-        <div>
+        <CardTitle
+        title='员工管理'>
           <TeamOutlined />
-          <label>员工管理</label>
-        </div>
+        </CardTitle>
       }
       className="innerCard powercard">
         <Department/>
@@ -85,10 +86,10 @@ const Power = () => {
 
       <Card 
       title={
-        <div>
+        <CardTitle
+        title='权限分配'>
           <NodeIndexOutlined />
-          <label>权限分配</label>
-        </div>
+        </CardTitle>
       }
       className='innerCard powerdetail'>
         {authList}

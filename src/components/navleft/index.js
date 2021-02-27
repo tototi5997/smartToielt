@@ -32,8 +32,8 @@ export default class NavLeft extends Component{
                     <SubMenu
                     key="sub3"
                     title='用户管理'>
-                        <Menu.Item key="6"><Link to={{pathname:'/home/power'}}>权限管理</Link></Menu.Item>
-                        <Menu.Item key="8">员工关联</Menu.Item>
+                        <Menu.Item key="7"><Link to={{pathname:'/home/power'}}>权限管理</Link></Menu.Item>
+                        <Menu.Item key="8"><Link to={{pathname:'/home/stuffrelation'}}>员工关联</Link></Menu.Item>
                     </SubMenu>
 
                     <SubMenu

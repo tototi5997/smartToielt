@@ -4,7 +4,7 @@ export const Notice = types.model("Notice",{
   // 公告的id
   id: types.optional(types.number, 0),
   // 公告的内容
-  notice_detail: types.optional(types.string, 'This is notice area !!! '),
+  notice_detail: types.optional(types.string, '请输入公告屏内容！'),
   // 公告编辑区内容
   noticefix_detail: types.optional(types.string,''),
   // 历史记录

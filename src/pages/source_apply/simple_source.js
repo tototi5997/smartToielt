@@ -15,8 +15,8 @@ const SimpleSource=()=>{
     }
     //表格布局配置项
     const layout = {
-        labelCol: { span: 4 },
-        wrapperCol: { span: 20 },
+        labelCol: { span: 6 },
+        wrapperCol: { span: 16 },
       };
     return(
         <Form {...layout}>

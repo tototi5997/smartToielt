@@ -1,8 +1,14 @@
 import React from 'react'
-import { Button, Card, Modal, List  } from 'antd'
+import {Button, Card, Modal, DatePicker  } from 'antd'
 import  SimpleSource  from './simple_source'
 import EleseSource from "./else_source";
+import c from 'camelcase'
+import '../../common/common.less'
+import './apply.less'
+import CardTitle from '../../components/card-title'
+import {ToolOutlined, FileMarkdownOutlined, SearchOutlined} from '@ant-design/icons'
 
+const { RangePicker } = DatePicker
 class SourceApply extends React.Component{
     state={
       // 基础申请modal可见性
@@ -15,18 +21,23 @@ class SourceApply extends React.Component{
         const {visible,modelTitle} =this.state
         const data = ['this','is','test','item']
         return(
-            <div style={{height:800,overflow:"auto"}}>
-                <Card title='耗材申请' style={{margin:15}}>
-                    <Button onClick={this.simpleApply}>普通耗材申请</Button>
-                    <Button onClick={this.elseApply}>其他耗材申请</Button>
+            <div className={c('outerdiv')}>
+                <Card 
+                  title={
+                    <CardTitle title="耗材申请"><ToolOutlined /></CardTitle>
+                  } 
+                  className={c('innerCard')}>
+                    <div className={c('butwarp')}>
+                      <div 
+                        className={c('buttonsim')}
+                        onClick={this.simpleApply}>
+                        普通耗材申请
+                      </div>
+                      <div onClick={this.elseApply} className={c('buttonel')}>
+                        其他耗材申请
+                      </div>
+                    </div>
                 </Card>
-                <List
-                  style={{margin:15}}
-                  header={<div>耗材申请记录</div>}
-                  bordered
-                  dataSource={data}
-                  renderItem={item => <List.Item onClick={this.handleGetItemDetail}>{item}</List.Item>}
-                />
                 <Modal
                 title={modelTitle}
                 visible={visible}
@@ -34,6 +45,23 @@ class SourceApply extends React.Component{
                 >
                     {modelTitle === '普通耗材申请'?<SimpleSource />:<EleseSource/>}
                 </Modal>
+
+                <Card 
+                  className={c('innerCard')}
+                  title={
+                    <CardTitle title="申请记录">
+                      <FileMarkdownOutlined />
+                    </CardTitle>}>
+                    <RangePicker />
+                    <Button 
+                      className={c('fdb')}
+                      type="primary">
+                      <SearchOutlined />
+                    </Button>
+                    <div className={c('infoform')}>
+                      这里放获取信息的表格
+                    </div>
+                </Card>
             </div>
         );
     }

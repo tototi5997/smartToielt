@@ -7,6 +7,7 @@ import '../../common/common.less'
 import './apply.less'
 import CardTitle from '../../components/card-title'
 import {ToolOutlined, FileMarkdownOutlined, SearchOutlined} from '@ant-design/icons'
+import DesignTable from '../../components/table'
 
 const { RangePicker } = DatePicker
 class SourceApply extends React.Component{
@@ -16,6 +17,7 @@ class SourceApply extends React.Component{
       modelTitle: '',
       // item modal可见性
       detailVisbale: false,
+      isOpen: false,
     }
     render(){
         const {visible,modelTitle} =this.state
@@ -55,11 +57,20 @@ class SourceApply extends React.Component{
                     <RangePicker />
                     <Button 
                       className={c('fdb')}
-                      type="primary">
+                      type="primary"
+                      onClick={
+                        ()=>{
+                          this.setState({
+                            isOpen: true
+                          })
+                          console.log('isOpen', this.state.isOpen)
+                        }
+                      }
+                      >
                       <SearchOutlined />
                     </Button>
                     <div className={c('infoform')}>
-                      这里放获取信息的表格
+                      <DesignTable width={1000}/>
                     </div>
                 </Card>
             </div>

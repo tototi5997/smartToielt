@@ -8,6 +8,8 @@ import './apply.less'
 import CardTitle from '../../components/card-title'
 import {ToolOutlined, FileMarkdownOutlined, SearchOutlined} from '@ant-design/icons'
 import DesignTable from '../../components/table'
+import dataSource from '../../components/table/data'
+import columns from '../../components/table/columns';
 
 const { RangePicker } = DatePicker
 class SourceApply extends React.Component{
@@ -70,7 +72,10 @@ class SourceApply extends React.Component{
                       <SearchOutlined />
                     </Button>
                     <div className={c('infoform')}>
-                      <DesignTable width={1000}/>
+                      <DesignTable
+                        columns={columns}
+                        dataSource={dataSource} 
+                        width={1080}/>
                     </div>
                 </Card>
             </div>

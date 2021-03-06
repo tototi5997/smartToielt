@@ -3,8 +3,10 @@ import React,{Component} from 'react'
 import './index.less'
 import axios from '../../utils/axios/index'
 import Modal from 'antd/lib/modal/Modal'
-import { WarningOutlined } from '@ant-design/icons';
+import { WarningOutlined,TagsOutlined } from '@ant-design/icons';
 import columns from './index.config'
+import '../../common/common.less'
+import CardTitle from '../../components/card-title'
 
 
 export default class Remind extends Component{
@@ -44,8 +46,12 @@ export default class Remind extends Component{
       }
   }   
     return(
-      <div className='remind_box'  >
-        <Card title='清扫提醒' className='remind_card'>
+      <div className='outerdiv'  >
+        <Card title={
+          <CardTitle title="清扫提醒">
+            <TagsOutlined />
+          </CardTitle>
+        } className='innerCard'>
           <Button type='danger' style={{marginBottom:10}} onClick={this.handleSubmit}><WarningOutlined />提醒清扫</Button>
           <Table  
           columns={columns} 

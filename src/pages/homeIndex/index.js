@@ -4,6 +4,7 @@ import {Card,Row,Col,Progress,Descriptions,Tooltip  } from 'antd'
 import echarts from 'echarts/lib/echarts'
 import ReactEcharts from 'echarts-for-react'
 import echartsThema from '../../public/echartsThema'
+import '../../common/common.less'
 
 import 'echarts/lib/chart/line'          //导入折线图
 import 'echarts/lib/chart/bar'          //导入柱形图
@@ -126,7 +127,7 @@ export default class HomePage extends React.Component{
 
     render(){
         return(
-            <div className='warp_content' style={{height:800,overflow:"auto"}}>
+            <div className='warp_content outerdiv'>
                 <Card title='当日数据' className='inner-card'>
                     <div className='progress_box'>
                         <Tooltip title="厕纸总存量当前为95%，低于30%请及时更换">

@@ -1,9 +1,11 @@
 import { Card,Form, Input,Button, Select,Tooltip, Table,Modal, message,Checkbox } from 'antd'
 import React,{Component} from 'react'
-import { SearchOutlined,BarsOutlined,CarryOutOutlined,CheckOutlined,CloseOutlined } from '@ant-design/icons';
+import {SettingOutlined,SearchOutlined,BarsOutlined,CarryOutOutlined,CheckOutlined,CloseOutlined } from '@ant-design/icons';
 import columns from './index.config'
 import Axios from '../../utils/axios'
 import './index.less'
+import '../../common/common.less'
+import CardTitle from '../../components/card-title'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -26,8 +28,12 @@ class FixEquipment extends Component{
     }
     }
     return(
-      <div style={{height:800,overflow:"auto"}}>
-        <Card title='设备保修' style={{margin:15}}>
+      <div className="outerdiv">
+        <Card title={
+          <CardTitle title="设备报修">
+            <SettingOutlined />
+          </CardTitle>
+        } className="innerCard">
           <Form layout='inline' style={{marginBottom:15}}>
             <FormItem name='id_toielt' label='公厕ID' style={{width:120}}>
               <Tooltip title='Input a number!' placement='topLeft'><Input/></Tooltip>

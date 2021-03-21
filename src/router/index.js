@@ -13,6 +13,7 @@ import User from '../pages/user'
 import AlertInfo from '../pages/alert-information/index'
 import Power from '../pages/power/index'
 import StuffRelation from '../pages/stuff-relation'
+import RepairStatistic from '../pages/reapair-statistic'
 
 export default class IRouter extends Component{
     render(){
@@ -34,6 +35,7 @@ export default class IRouter extends Component{
                                 <Route path='/home/alertinfo' component={AlertInfo}></Route>
                                 <Route path='/home/power' component={Power}></Route>
                                 <Route path='/home/stuffrelation' component={StuffRelation}></Route>
+                                <Route path='/home/repairStatistic' component={RepairStatistic}></Route>
                             </Switch>
                         </Home>
                     )

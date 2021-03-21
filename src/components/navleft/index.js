@@ -10,7 +10,7 @@ export default class NavLeft extends Component{
             <div>
                   <Menu
                     theme='dark'
-                    style={{ width: 'auto' ,minHeight:820,overflow:"auto"}} 
+                    style={{ width: 'auto' ,minHeight:820,overflow:"auto"}}
                     defaultOpenKeys={['sub1','sub2']}
                     mode="inline"
                   >
@@ -39,7 +39,7 @@ export default class NavLeft extends Component{
                     <SubMenu
                     key="sub4"
                     title='报表统计'>
-                      <Menu.Item key="9">维修统计</Menu.Item>
+                      <Menu.Item key="9"><Link to={{pathname:'/home/repairStatistic'}}>维修统计</Link></Menu.Item>
                       <Menu.Item key="10">考勤统计</Menu.Item>
                       <Menu.Item key="11">环境统计</Menu.Item>
                       <Menu.Item key="12">耗材统计</Menu.Item>

@@ -38,7 +38,7 @@ const HomePage = () => {
     const getRadarOption = () => {
       return radarOption
     }
-  
+
   return (
       <div className={c('outerdiv')}>
                 <Card title='当日数据' className={c('innerCard')}>
@@ -94,7 +94,7 @@ const HomePage = () => {
                         /></Tooltip>
                         <Descriptions title="干手纸库存"  className={c('description_style')} />
                     </div>
-                  </div> 
+                  </div>
                 </Card>
 
                 <div className={c('innerCard')}>
@@ -159,9 +159,9 @@ const HomePage = () => {
                           />
                         </Card>
                     </Col>
-                    </Row>                   
+                    </Row>
                 </div>
- 
+
     </div>
   )
 }

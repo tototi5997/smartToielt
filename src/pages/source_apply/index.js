@@ -75,7 +75,7 @@ class SourceApply extends React.Component{
                       <DesignTable
                         columns={columns}
                         dataSource={dataSource} 
-                        width={1080}/>
+                        width={'100%'}/>
                     </div>
                 </Card>
             </div>

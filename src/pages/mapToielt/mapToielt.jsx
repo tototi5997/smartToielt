@@ -85,7 +85,7 @@ const MapToielt = () => {
         <div className={c('mt')}>
             <Table 
               dataSource={placeInfo}
-              width={1080}
+              width={'100%'}
               columns={columns}
             />
         </div>    

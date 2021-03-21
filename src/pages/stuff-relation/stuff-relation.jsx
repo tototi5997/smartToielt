@@ -8,12 +8,20 @@ import CardTitle from '../../components/card-title'
 import {UserAddOutlined, RetweetOutlined,UserOutlined} from '@ant-design/icons'
 import Axios from '../../utils/axios'
 import List from '../power/list'
+import SelectGroup from './selectGroup'
 
 const StuffRelation = () => {
   const [isCreat, setCreatState] = useState(false)
   const creatref = useRef(null)
   let [adminList, setAdminList] = useState()
   let [simList, setSimList] = useState()
+  // 详情列表数组保存
+  let [detailList, getDetail] = useState({
+    name:'',
+    age: '',
+    sex: '',
+    role: '',
+  })
 
   // useeffect 获取用户列表
   useEffect(() => {
@@ -30,14 +38,18 @@ const StuffRelation = () => {
   const draw = () => {
     let itemlist = []
     if(adminList){
-       itemlist = adminList.map(item => 
-         Children.toArray(<List info={item} onItemClick={()=>{}}/>)
+       itemlist = adminList.map(item =>
+         Children.toArray(<List info={item} onItemClick={ () => {
+          getDetail(item)
+         }}/>)
         )
         // return itemlist
-    } 
+    }
     if(simList){
       itemlist.push(simList.map(item =>
-        Children.toArray(<List info={item} onItemClick={()=>{}}/>)
+        Children.toArray(<List info={item} onItemClick={ () =>{
+          getDetail(item)
+        }}/>)
         ))
       return itemlist
     }
@@ -46,15 +58,15 @@ const StuffRelation = () => {
   return (
     <div className={c('sw', 'outerdiv')}>
       <div className={c('si')}>
-        <Card 
+        <Card
         title={
           <CardTitle title='创建员工'>
             <UserAddOutlined />
           </CardTitle>
-        } 
+        }
         className={c('innerCard', 'c_c')}>
           <div>
-            <Button 
+            <Button
               type="primary"
               onClick={()=>{
                 setCreatState(!isCreat)
@@ -74,20 +86,20 @@ const StuffRelation = () => {
           {draw()}
           </div>
 
-          <div 
+          <div
           ref={creatref}
           className={c('scl',{
             'scl_show' : isCreat === true
           })}
-        >
+          >
             <ul className={c('scl_u')}>
               <li>姓名：<Input className={c('scl_u_i')}/></li>
               <li>年龄：<Input className={c('scl_u_i')}/></li>
               <li>性别：<Input className={c('scl_u_i')}/></li>
               <li>住址：<Input className={c('scl_u_i')}/></li>
             </ul>
-            <Avatar 
-              size={120} 
+            <Avatar
+              size={120}
               icon={<UserOutlined />}
               className={c('scl_ava')}
               />
@@ -99,14 +111,34 @@ const StuffRelation = () => {
       </div>
 
       <div className={c('si')}>
-        <Card 
+        <Card
         title={
           <CardTitle title='员工关联'>
             <RetweetOutlined />
           </CardTitle>
-        } 
-        className={c('innerCard')}>
-          card warp
+        }
+        className={c('innerCard card')}>
+          <div className={c('base_info')}>基本信息</div>
+          <div
+          className={c('scl',{
+            'scl_show' : true
+          })}
+          >
+            <ul className={c('scl_u')}>
+              <li>姓名：{detailList.name}</li>
+              <li>年龄：{detailList.age}</li>
+              <li>性别：{detailList.sex === 1? '男':'女'}</li>
+              <li>职位：{detailList.role}</li>
+            </ul>
+            <Avatar
+              size={120}
+              icon={<UserOutlined />}
+              className={c('scl_ava')}
+              style={{top:156}}
+              />
+            <div className={c('base_info')}>关联信息</div>
+            <SelectGroup info={detailList}/>
+          </div>
         </Card>
       </div>
     </div>

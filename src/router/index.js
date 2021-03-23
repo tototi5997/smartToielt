@@ -14,6 +14,9 @@ import AlertInfo from '../pages/alert-information/index'
 import Power from '../pages/power/index'
 import StuffRelation from '../pages/stuff-relation'
 import RepairStatistic from '../pages/reapair-statistic'
+import CheckStastic from '../pages/check-statistic'
+import EnviromentStatistic from '../pages/enviroment-statistic'
+import MaterialStatistic from '../pages/material-statistic'
 
 export default class IRouter extends Component{
     render(){
@@ -36,6 +39,9 @@ export default class IRouter extends Component{
                                 <Route path='/home/power' component={Power}></Route>
                                 <Route path='/home/stuffrelation' component={StuffRelation}></Route>
                                 <Route path='/home/repairStatistic' component={RepairStatistic}></Route>
+                                <Route path='/home/checkStatistic' component={CheckStastic}></Route>
+                                <Route path='/home/enviromentStatistic' component={EnviromentStatistic}></Route>
+                                <Route path='/home/materialStatistic' component={MaterialStatistic}></Route>
                             </Switch>
                         </Home>
                     )

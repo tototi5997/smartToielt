@@ -398,7 +398,7 @@ module.exports = function (webpackEnv) {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                
+
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
@@ -444,7 +444,7 @@ module.exports = function (webpackEnv) {
                 loader: 'less-loader', // compiles Less to CSS
                 options: {
                   modifyVars: {
-                    'primary-color': '#BC8F8F',				//更改颜色
+                    'primary-color': '#3399ff',				//更改颜色
                   },
                   javascriptEnabled: true,
                 },
@@ -469,7 +469,7 @@ module.exports = function (webpackEnv) {
                 cacheDirectory: true,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
-                
+
                 // Babel sourcemaps are needed for debugging into node_modules
                 // code.  Without the options below, debuggers like VSCode
                 // show incorrect code and set breakpoints on the wrong lines.

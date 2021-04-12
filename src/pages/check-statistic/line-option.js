@@ -1,6 +1,6 @@
 const option = {
   title:{
-    text:'维修次数'
+    text:'缺勤人数统计'
   },
   //鼠标悬浮展示数据
   tooltip:{
@@ -16,7 +16,7 @@ const option = {
   },
   series:[
       {
-          name:'维修次数',
+          name:'缺勤人数',
           type:'line',
           data:[5,6,10,2,15,8,13]
       }

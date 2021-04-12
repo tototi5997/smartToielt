@@ -10,16 +10,21 @@ import ReactEChartsCore from 'echarts-for-react/lib/core'
 import {BarChart, LineChart, PieChart, RadarChart} from 'echarts/charts'
 import {GridComponent, TooltipComponent, TitleComponent, LegendComponent} from 'echarts/components'
 import {CanvasRenderer} from 'echarts/renderers'
-import pieOption from '../reapair-statistic/pie'
-import lineOption from '../reapair-statistic/lineoption'
+import barOption from './bar-option'
+import pieOpiton from './pie-option'
+import lineOption from './line-option'
 
 echarts.use(
   [TitleComponent, TooltipComponent, PieChart, LineChart, GridComponent, BarChart, CanvasRenderer, LegendComponent, RadarChart]
 )
 const CheckStatistic = () => {
   // pirOption
-  const getPieOption =() => {
-    return pieOption
+  const getBarOption =() => {
+    return barOption
+  }
+  // pieOpiton
+  const getPieOption = () => {
+    return pieOpiton
   }
   // lineOption
   const getLineOption = () => {
@@ -34,7 +39,7 @@ const CheckStatistic = () => {
             <Card className={c('repair_card_form')}>
               <ReactEChartsCore
                 echarts={echarts}
-                option={getPieOption()}
+                option={getBarOption()}
                 notMerge={true}
                 lazyUpdate={true}
                 theme={"theme_name"}

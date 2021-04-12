@@ -11,22 +11,22 @@ export default class Headertop extends Component{
                     <img className='icon' src='/icon/toilet.png' alt='' />
                     <span>智能公厕后台管理系统</span>
                     <NavLink to='/home/user'>
-                      <img 
-                      className='usericon' 
-                      src='/icon/user.svg' 
+                      <img
+                      className='usericon'
+                      src='/icon/user.svg'
                       alt=''
                       />
                     </NavLink>
                     <NavLink to='/home/alertinfo'>
                       <Badge className="infoicon" dot count={1}>
-                        <img 
+                        <img
                         className="infoicon"
                         id="hovericon"
                         src='/icon/info.svg'
                         alt=''
-                        /> 
+                        />
                       </Badge>
-                    </NavLink>                
+                    </NavLink>
                 </div>
             </div>
         );

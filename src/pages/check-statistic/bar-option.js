@@ -1,6 +1,6 @@
-const option = {
+const barOption = {
   title:{
-    text:'维修次数'
+    text:'出勤人数'
   },
   //鼠标悬浮展示数据
   tooltip:{
@@ -16,10 +16,14 @@ const option = {
   },
   series:[
       {
-          name:'维修次数',
-          type:'line',
-          data:[5,6,10,2,15,8,13]
+          name:'单位：人',
+          type:'bar',
+          showBackground: true,
+          data:[1000,2000,1520,1200,3522,1400,5200],
+          backgroundStyle: {
+            color: 'rgba(180, 180, 180, 0.2)'
+        }
       }
   ]
 }
-export default option
+export default barOption

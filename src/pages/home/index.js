@@ -18,7 +18,6 @@ export default class Home extends Component{
                 <Row>
                     <Col span='24'><Footer/></Col>
                 </Row>
-               
             </div>
         );
     }

@@ -12,6 +12,7 @@ import {GridComponent, TooltipComponent, TitleComponent, LegendComponent} from '
 import {CanvasRenderer} from 'echarts/renderers'
 import pieOption from './pie'
 import lineOption from './lineoption'
+import pieMonetOption from './pie-money'
 
 echarts.use(
   [TitleComponent, TooltipComponent, PieChart, LineChart, GridComponent, BarChart, CanvasRenderer, LegendComponent, RadarChart]
@@ -24,6 +25,10 @@ const RepairStatistic = () => {
   // lineOption
   const getLineOption = () => {
     return lineOption
+  }
+  // piemoneyoption
+  const getMoneyOption = () => {
+    return pieMonetOption
   }
   return (
     <div className={c('outerdiv')}>
@@ -43,7 +48,7 @@ const RepairStatistic = () => {
             <Card className={c('repair_card_form')}>
               <ReactEChartsCore
                   echarts={echarts}
-                  option={getPieOption()}
+                  option={getMoneyOption()}
                   notMerge={true}
                   lazyUpdate={true}
                   theme={"theme_name"}

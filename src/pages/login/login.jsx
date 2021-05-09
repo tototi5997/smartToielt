@@ -4,7 +4,7 @@ import {
   UserOutlined,
   LockOutlined
 } from '@ant-design/icons'
-import {observer} from 'mobx-react-lite' 
+import {observer} from 'mobx-react-lite'
 import './index.less'
 import w from '../../models/root'
 import { useHistory } from 'react-router-dom'
@@ -39,23 +39,24 @@ const Login =()=>{
             user.userLogin(username)
             history.push('/home/homepage')
           }
+          else message.error('登录信息错误！')
         }
         else message.error('登录信息错误！')
       }
-      
+
       return(
-        <div className='content' 
+        <div className='content'
         style={{background:`url('/images/back-login.jpg')`, backgroundRepeat:'no-repeat', backgroundSize:'cover'}}>
           <div className='login-box'>
             <p>SmartToilet后台管理系统登录</p>
             <div className='inputcontent'>
-              <Form 
-              {...layout} 
+              <Form
+              {...layout}
               style={{marginTop:30}}
               onFinish={checkUser}
               >
                 <Form.Item
-                label={<UserOutlined/>}
+                label={<UserOutlined />}
                 name='userName'
                 rules={[
                   {
@@ -79,9 +80,9 @@ const Login =()=>{
                   <Input.Password/>
                 </Form.Item>
                 <Form.Item {...tailLayout}>
-                  <Button 
-                  type="primary" 
-                  htmlType="submit" 
+                  <Button
+                  type="primary"
+                  htmlType="submit"
                   style={{width:150,marginTop:20}}
                   >
                     Submit
@@ -91,7 +92,7 @@ const Login =()=>{
           </div>
           </div>
         </div>
-      );  
+      );
 }
 
 export default observer(Login)

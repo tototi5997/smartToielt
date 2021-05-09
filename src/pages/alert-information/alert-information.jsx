@@ -15,17 +15,17 @@ const AlertInfo = () => {
     Axios.ajax({url:'/alertinfo/information'}).then(res => {
       if (res.code === 0) {
         setItem(resitem = res.info)
-      } 
+      }
     })
   }, [])
 
   const renderItem = () => {
-    let alertInfo = resitem.map(item => 
-      Children.toArray(<AlertInfoItem info={item}/>) 
+    let alertInfo = resitem.map(item =>
+      Children.toArray(<AlertInfoItem info={item}/>)
     )
     return alertInfo
   }
-  
+
 
   return (
     <div className="outerdiv">
@@ -34,7 +34,7 @@ const AlertInfo = () => {
         <BellOutlined />
         <label className="label">报警消息</label>
       </div>
-      } 
+      }
       className="innerCard">
         {renderItem()}
       </Card>

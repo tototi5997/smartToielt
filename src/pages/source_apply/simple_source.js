@@ -3,7 +3,7 @@ import { Form,Input,Select,InputNumber } from 'antd'
 
 const { Option } = Select;
 
-const SimpleSource=()=>{
+const SimpleSource=({id, people, onIdChange = () => {}, onPeopleChange = () => {}})=>{
     const itemValue = ['厕纸','洗手剂','空气清新剂','干手纸'];
     //渲染申请项
     const renderItem=()=>{
@@ -20,8 +20,18 @@ const SimpleSource=()=>{
       };
     return(
         <Form {...layout}>
-            <Form.Item label='ToieltID'><Input/></Form.Item>
-            <Form.Item label='申请人'><Input/></Form.Item>
+            <Form.Item label='ToieltID'>
+              <Input
+              value={id}
+              onChange={e => onIdChange(e)}
+              />
+            </Form.Item>
+            <Form.Item label='申请人'>
+              <Input
+              value={people}
+              onChange={e => onPeopleChange(e)}
+              />
+            </Form.Item>
             <Form.Item label='申请项'>
             <Select
             mode="multiple"

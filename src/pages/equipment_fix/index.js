@@ -12,7 +12,8 @@ const Option = Select.Option;
 class FixEquipment extends Component{
   state={
     dataSource:[],
-    visible:false
+    visible:false,
+    inputValue: '',
   }
   render(){
     const plainOptions = ['水龙头', '洗手池', '储水器','干手机','红外扫描仪','空气感应器'];
@@ -23,7 +24,7 @@ class FixEquipment extends Component{
       onChange:(selectedRowKeys,selectedRows)=>{
         this.setState({
             selectedRowKeys,
-            selectedRows   
+            selectedRows
         })
     }
     }
@@ -54,16 +55,16 @@ class FixEquipment extends Component{
             <FormItem name='fixSubmit_btn'>
               <Button type='primary' onClick={this.handleShowModal}><BarsOutlined />设备报修</Button>
             </FormItem>
-            <FormItem>
+            {/* <FormItem>
               <Button type='primary'><CarryOutOutlined />PDF导出</Button>
-            </FormItem>
+            </FormItem> */}
           </Form>
           <Table
           columns={columns}
           dataSource={this.state.dataSource}
           rowSelection={rowSelection}
           onRow={(record,index)=>{
-            return{               
+            return{
               onClick:()=>{
                   this.setState({
                     selectedRowKeys:[index],
@@ -79,8 +80,23 @@ class FixEquipment extends Component{
         visible={this.state.visible}
         onCancel={()=>{this.setState({visible:false})}}
         footer={[
-          <Button><CheckOutlined />确认提交</Button>,
-          <Button><CloseOutlined />取消提交</Button>
+          <Button
+          onClick={() => {
+            message.success('设备报修成功！')
+            this.setState({visible: false})
+          }}
+          >
+            <CheckOutlined />
+            确认提交
+          </Button>,
+          <Button
+          onClick={() => {
+            this.setState({visible: false, inputValue: ''})
+          }}
+          >
+            <CloseOutlined />
+            取消提交
+          </Button>
         ]}
         >
         <Form>
@@ -88,15 +104,22 @@ class FixEquipment extends Component{
           label='厕所ID'
           name=''
           rules={[{required:true,message:'此项为必填项！'}]}
-          ><Input /></FormItem>
+          >
+            <Input
+            value={this.setState.inputValue}
+            onChange={e => {
+              this.setState({inputValue:e})
+            }}
+            />
+          </FormItem>
           <FormItem label='选择报修'>
             <Checkbox.Group options={plainOptions}/>
           </FormItem>
-          <FormItem
+          {/* <FormItem
           label='申请人'
           name=''
           rules={[{required:true,message:'此项为必填项！'}]}
-          ><Input /></FormItem>
+          ><Input /></FormItem> */}
         </Form>
         </Modal>
       </div>
@@ -107,26 +130,25 @@ class FixEquipment extends Component{
     Axios.ajax({
       url:'/equipment_fix'
     }).then((res,rej)=>{
-      if(res.code == '0'){
-        // console.log(res)
+      if(res.code === 0){
         this.setState({
             dataSource:res.result.list.map((item,index)=>{
             item.key = index;
             return item;
-          })  
+          })
         })
       }else{console.log(rej)}
     })
   }
   //设备保修显示模态框
   handleShowModal=()=>{
-    if(this.state.selectedRowKeys == undefined){
+    if(this.state.selectedRowKeys === undefined){
       message.error('请先选择需要报修的项目！')
     }else{
       this.setState({
         visible:true
       })
-    } 
+    }
   }
 }
 

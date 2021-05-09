@@ -13,11 +13,20 @@ import lineoption from './lineoption'
 import pieCenterOption from './pie-center'
 import pieOption from './pie'
 import radarOption from './area'
+import Axios from '../../utils/axios'
 
 echarts.use(
   [TitleComponent, TooltipComponent, PieChart, LineChart, GridComponent, BarChart, CanvasRenderer, LegendComponent, RadarChart]
 )
 const HomePage = () => {
+  useEffect(() => {
+    Axios.ajax({url:'/homepage/state'}).then(res => {
+      if(res) {
+        console.log('Reciew Success')
+        console.log(res, 'res')
+      }
+    })
+  })
     // barOption
     const getBarOption = () => {
       return baroption

@@ -15,9 +15,9 @@ const DesignTable = ({width,dataSource,columns}) => {
     // 获取数据项key值数组
     let itemarr = columns.map(item => item.key)
     if (dataSource === undefined) {
-      return <tr 
+      return <tr
         align="center"
-        className={c('nodata')} 
+        className={c('nodata')}
         style={{width:width}}>
           暂无数据
         </tr>
@@ -25,9 +25,9 @@ const DesignTable = ({width,dataSource,columns}) => {
     else {
       return dataSource.map((item,index) => {
         // 做奇偶行不同颜色处理
-        if (index % 2 === 0) { 
-          return (
-            <tr 
+        if (index % 2 === 0) {
+          return Children.toArray(
+            <tr
                 className={c('singletr')}
                 align="center"
                 >
@@ -39,8 +39,8 @@ const DesignTable = ({width,dataSource,columns}) => {
               </tr>
           )
         } else {
-          return (
-            <tr 
+          return Children.toArray(
+            <tr
                 className={c('doubletr')}
                 align="center"
                 >
@@ -51,15 +51,15 @@ const DesignTable = ({width,dataSource,columns}) => {
                 }
               </tr>
           )
-        } 
+        }
       })
-    } 
+    }
   }
-  
+
   return (
     <div>
       <table
-        style={{width:width}} 
+        style={{width:width}}
         className={c('table')}
         cellPadding="3"
         align="left"
@@ -68,11 +68,11 @@ const DesignTable = ({width,dataSource,columns}) => {
           <tr align="center">
             {renderTh()}
           </tr>
-          {renderBody()}  
+          {renderBody()}
         </tbody>
       </table>
     </div>
   )
 
 }
-export default DesignTable 
+export default DesignTable

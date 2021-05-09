@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import { types } from 'mobx-state-tree'
 
 export const Notice = types.model("Notice",{
@@ -16,7 +17,7 @@ export const Notice = types.model("Notice",{
   // 添加一条公告
   const addNotice = () => {
     self.id++
-    // todo 
+    // todo
   }
   // 编辑修改框
   const editCheckBox = (v) =>  {
@@ -31,8 +32,9 @@ export const Notice = types.model("Notice",{
   // 发布公告
   const outputNotice =() => {
     let info = self.noticefix_detail
-    self.notice_detail = info 
+    self.notice_detail = info
     self.noticefix_detail = ''
+    message.success('发布成功！')
   }
   // 取消发布公告
   const clearNotice =() => {

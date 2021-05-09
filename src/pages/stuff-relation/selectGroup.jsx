@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import c from 'classnames'
 import './stuff-relation.less'
+import { message } from 'antd'
 
 
 const SelectGroup = ({info}) => {
@@ -14,21 +15,21 @@ const SelectGroup = ({info}) => {
   return (
     <div>
       <ul className={c('sg')}>
-        <li className={c('liitem')}>负责区域：<input 
+        <li className={c('liitem')}>负责区域：<input
           className={c('sg_in')}
           value={authPlace}
           onChange={e => {
             getAuthPlace(e.target.value)
           }}
         /></li>
-        <li className={c('liitem')}>对应厕所ID：<input 
+        <li className={c('liitem')}>对应厕所ID：<input
           className={c('sg_in')}
           value={toieltID}
           onChange={e => {
             getToieltID(e.target.value)
           }}
           /></li>
-        <li className={c('liitem')}>状态：<input 
+        <li className={c('liitem')}>状态：<input
           className={c('sg_in')}
           value={state === 1? '执勤中':'休息中'}
           onChange={e=>{
@@ -36,9 +37,12 @@ const SelectGroup = ({info}) => {
           }}
           /></li>
       </ul>
-      <div 
+      <div
         className={c('save')}
         onClick={()=>{
+          getAuthPlace('')
+          getToieltID('')
+          getState('')
           getConfig(
             config = {
               name: info.name,
@@ -50,6 +54,7 @@ const SelectGroup = ({info}) => {
               state,
             }
           )
+          message.success('信息保存成功！')
           console.log(config,'config')
         }}
         >保存</div>

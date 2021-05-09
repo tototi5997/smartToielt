@@ -11,9 +11,9 @@ export default class Axios {
         baseURL:baseApi,
         method:'GET',
       }).then((response) => {
-        if(response.status == '200'){
-          let res = response.data;        
-          if(res.code == '0'){
+        if(response.status === 200){
+          let res = response.data;
+          if(res.code === 0){
             resolve(res);         //抛出res
           }else{
             Modal.info({
@@ -25,6 +25,6 @@ export default class Axios {
           rej(response.data);
         }
       })
-    }).catch((e) => {});          //防止报错
+    }).catch((e) => {console.log(e)});          //防止报错
   }
 }

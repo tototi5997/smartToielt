@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Card, Modal, DatePicker  } from 'antd'
+import {Button, Card, Modal, DatePicker, message  } from 'antd'
 import  SimpleSource  from './simple_source'
 import EleseSource from "./else_source";
 import c from 'camelcase'
@@ -8,7 +8,7 @@ import './apply.less'
 import CardTitle from '../../components/card-title'
 import {ToolOutlined, FileMarkdownOutlined, SearchOutlined} from '@ant-design/icons'
 import DesignTable from '../../components/table'
-import dataSource from '../../components/table/data'
+import data from '../../components/table/data'
 import columns from '../../components/table/columns';
 
 const { RangePicker } = DatePicker
@@ -20,19 +20,23 @@ class SourceApply extends React.Component{
       // item modal可见性
       detailVisbale: false,
       isOpen: false,
+      id: '',
+      people: '',
+      note:'',
+      // 表格数据
+      dataSource: [],
     }
     render(){
         const {visible,modelTitle} =this.state
-        const data = ['this','is','test','item']
         return(
             <div className={c('outerdiv')}>
-                <Card 
+                <Card
                   title={
                     <CardTitle title="耗材申请"><ToolOutlined /></CardTitle>
-                  } 
+                  }
                   className={c('innerCard')}>
                     <div className={c('butwarp')}>
-                      <div 
+                      <div
                         className={c('buttonsim')}
                         onClick={this.simpleApply}>
                         普通耗材申请
@@ -45,27 +49,59 @@ class SourceApply extends React.Component{
                 <Modal
                 title={modelTitle}
                 visible={visible}
-                onCancel={()=>{this.setState({visible:false})}}
+                onOk={() => {
+                  this.setState({visible:false, people: '', id: '', note: ''})
+                  message.success('申请提交成功！')
+                }}
+                onCancel={()=>{
+                  this.setState({visible:false, people: '', id: '', note: ''})
+                  message.info('取消提交！')
+                }}
                 >
-                    {modelTitle === '普通耗材申请'?<SimpleSource />:<EleseSource/>}
+                    {modelTitle === '普通耗材申请'
+                    ?<SimpleSource
+                      id={this.state.id}
+                      onIdChange={e => {
+                        this.setState({id: e.target.value})
+                      }}
+                      people={this.state.people}
+                      onPeopleChange={e => {
+                        this.setState({people: e.target.value})
+                      }}
+                    />
+                    :<EleseSource
+                      id={this.state.id}
+                      onIdChange={e => {
+                        this.setState({id: e.target.value})
+                      }}
+                      people={this.state.people}
+                      onPeopleChange={e => {
+                        this.setState({people: e.target.value})
+                      }}
+                      note={this.state.note}
+                      onNoteChange={e => {
+                        this.setState({note: e.target.value})
+                      }}
+                    />}
                 </Modal>
 
-                <Card 
+                <Card
                   className={c('innerCard')}
                   title={
                     <CardTitle title="申请记录">
                       <FileMarkdownOutlined />
                     </CardTitle>}>
                     <RangePicker />
-                    <Button 
+                    <Button
                       className={c('fdb')}
                       type="primary"
                       onClick={
                         ()=>{
                           this.setState({
-                            isOpen: true
+                            isOpen: true,
+                            dataSource: data,
                           })
-                          console.log('isOpen', this.state.isOpen)
+
                         }
                       }
                       >
@@ -74,7 +110,7 @@ class SourceApply extends React.Component{
                     <div className={c('infoform')}>
                       <DesignTable
                         columns={columns}
-                        dataSource={dataSource} 
+                        dataSource={this.state.dataSource}
                         width={'100%'}/>
                     </div>
                 </Card>

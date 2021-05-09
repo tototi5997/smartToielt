@@ -3,7 +3,7 @@ import c from 'classnames'
 import anime from 'animejs'
 import './stuff-relation.less'
 import '../../common/common.less'
-import {Card, Button, Input, Avatar} from 'antd'
+import {Card, Button, Input, Avatar, message} from 'antd'
 import CardTitle from '../../components/card-title'
 import {UserAddOutlined, RetweetOutlined,UserOutlined} from '@ant-design/icons'
 import Axios from '../../utils/axios'
@@ -21,6 +21,13 @@ const StuffRelation = () => {
     age: '',
     sex: '',
     role: '',
+  })
+  // 创建员工信息
+  let [createData, setCreateData] = useState({
+    name:'',
+    age: '',
+    sex: '',
+    address: '',
   })
 
   // useeffect 获取用户列表
@@ -79,7 +86,18 @@ const StuffRelation = () => {
               }
             >创建员工</Button>
 
-            <Button className={c('s_button_g')}>清空表单</Button>
+            <Button
+              onClick={() => {
+                setCreateData({
+                  name: '',
+                  age: '',
+                  sex: '',
+                  address: ''
+                })
+              }}
+              className={c('s_button_g')}>
+              清空表单
+            </Button>
           </div>
 
           <div className={c('sl')}>
@@ -93,17 +111,68 @@ const StuffRelation = () => {
           })}
           >
             <ul className={c('scl_u')}>
-              <li>姓名：<Input className={c('scl_u_i')}/></li>
-              <li>年龄：<Input className={c('scl_u_i')}/></li>
-              <li>性别：<Input className={c('scl_u_i')}/></li>
-              <li>住址：<Input className={c('scl_u_i')}/></li>
+              <li>
+                姓名：<Input className={c('scl_u_i')}
+                  value={createData.name}
+                  onChange={e => {setCreateData({
+                    name: e.target.value,
+                    age: createData.age,
+                    sex: createData.sex,
+                    address: createData.address,
+                  })}}
+                />
+              </li>
+              <li>
+                年龄：<Input className={c('scl_u_i')}
+                  value={createData.age}
+                  onChange={e => {setCreateData({
+                    name: createData.name,
+                    age: e.target.value,
+                    sex: createData.sex,
+                    address: createData.address,
+                  })}}
+                />
+              </li>
+              <li>
+                性别：<Input className={c('scl_u_i')}
+                  value={createData.sex}
+                  onChange={e => {setCreateData({
+                    name: createData.name,
+                    age: createData.age,
+                    sex: e.target.value,
+                    address: createData.address,
+                  })}}
+                />
+              </li>
+              <li>
+                住址：<Input className={c('scl_u_i')}
+                  value={createData.address}
+                  onChange={e => {setCreateData({
+                    name: createData.name,
+                    age: createData.age,
+                    sex: createData.sex,
+                    address: e.target.value
+                  })}}
+                />
+              </li>
             </ul>
             <Avatar
               size={120}
               icon={<UserOutlined />}
               className={c('scl_ava')}
               />
-            <Button className={c('scl_b')}>
+            <Button
+              className={c('scl_b')}
+              onClick={() => {
+                message.success('创建成功！')
+                setCreateData({
+                  name: '',
+                  age: '',
+                  sex: '',
+                  address: ''
+                })
+              }}
+            >
               确认
             </Button>
           </div>

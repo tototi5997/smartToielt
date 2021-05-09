@@ -56,11 +56,11 @@ const Power = () => {
   const draw = () => {
     let itemlist = []
     if(adminList){
-       itemlist = adminList.map(item => 
+       itemlist = adminList.map(item =>
          Children.toArray(<List info={item} onItemClick={()=>{itemClick(item)}}/>)
         )
         // return itemlist
-    } 
+    }
     if(simList){
       itemlist.push(simList.map(item =>
         Children.toArray(<List info={item} onItemClick={()=>{itemClick(item)}}/>)
@@ -84,7 +84,7 @@ const Power = () => {
         </div>
       </Card>
 
-      <Card 
+      <Card
       title={
         <CardTitle
         title='权限分配'>

@@ -19,11 +19,11 @@ const { mapdetail } = w
 // 接入config
 const  { polygonPath }  = PaintConfig
 const { markerStyle } = PaintConfig
-const { markerPath } = PaintConfig 
+const { markerPath } = PaintConfig
 
 const MapToielt = () => {
   // 保存获取的表格信息
-  let [placeInfo, setInfo] = useState() 
+  let [placeInfo, setInfo] = useState()
   const plugins = ['Scale', 'ToolBar']
 
   // ajax获取相关区域信息
@@ -49,15 +49,15 @@ const MapToielt = () => {
 
   return (
     <div className={c('outerdiv')}>
-      <Card 
+      <Card
         title={
-          <CardTitle title="公厕地图"> 
+          <CardTitle title="公厕地图">
             <HomeOutlined />
           </CardTitle>
         }
         className={c('innerCard')}>
         <div style={{width:'100%', height:400}}>
-          <Map 
+          <Map
           amapkey={'4ed3b5e354a82d509bde8c61c3e89ff4'}
           center={mapdetail.center.toJSON()}
           zoom={mapdetail.zoom}
@@ -68,13 +68,13 @@ const MapToielt = () => {
           </Map>
         </div>
 
-        <div className={c('bg')}> 
-          <Select 
-            onChange={mapdetail.changePlace} 
+        <div className={c('bg')}>
+          <Select
+            onChange={mapdetail.changePlace}
             defaultValue={'江夏区'}>
               { renderOption() }
           </Select>
-          <Button 
+          <Button
             className={c('button')}
             onClick={() => {
               changeCenter()
@@ -83,12 +83,12 @@ const MapToielt = () => {
         </div>
 
         <div className={c('mt')}>
-            <Table 
+            <Table
               dataSource={placeInfo}
               width={'100%'}
               columns={columns}
             />
-        </div>    
+        </div>
       </Card>
     </div>
   )
@@ -113,7 +113,7 @@ const renderPolygon = () => {
   let polygonConfig = polygonPath
   for(let i in polygonConfig){
     polygonlist.push(
-      <Polygon 
+      <Polygon
       key={polygonConfig[i]}
       path={polygonConfig[i]}
       visible={mapdetail.isPolygonVisable}
@@ -127,13 +127,13 @@ const reanderMarkers = () => {
   const markersList = []
   for(let i in markerPath){
     markerPath[i].map((item, index) => {
-      markersList.push(<Marker 
+      markersList.push(<Marker
         visible={mapdetail.isMarkerVisable}
-        key={item.toString()} 
+        key={item.toString()}
         position={item}>
           <div style={markerStyle}/>
         </Marker>)
-      return markersList 
+      return markersList
     })
   }
   return markersList

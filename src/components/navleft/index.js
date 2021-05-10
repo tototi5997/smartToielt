@@ -7,10 +7,10 @@ const { SubMenu } = Menu;
 export default class NavLeft extends Component{
     render(){
         return(
-            <div>
+            <div style={{height: '100%'}}>
                   <Menu
                     theme='dark'
-                    style={{ width: 'auto' ,minHeight:820,overflow:"auto"}}
+                    style={{ width: '100%',height:'100%', overflow:"auto"}}
                     defaultOpenKeys={['sub1','sub2']}
                     mode="inline"
                   >

@@ -1,6 +1,5 @@
 .header{
     width: auto;
-    height: 80px;
     background-color: rgb(12, 57, 117);
     .head_left{
         .icon{
@@ -12,8 +11,8 @@
             font-size: 25px;
             margin-left: 20px;
             position: relative;
-            top:10px;  
-            color: white;  
+            top:10px;
+            color: white;
             font-family: '幼圆';
         }
         .usericon{
@@ -28,7 +27,7 @@
             width: 27px;
             position: relative;
             float: right;
-            
+
           }
           .infoicon{
             width: 27px;
@@ -43,5 +42,17 @@
         #hovericon:hover{
           border: 1px solid rgb(17, 8, 143);
         }
-    }   
+    }
+}
+.iconbutton{
+  &:hover{
+    background-color: rgba(245, 245, 245, 0.158);
+  }
+  &:active{
+    transform: scale(0.95);
+    transform-origin: 50% 50%;
+  }
+}
+.jsd{
+  justify-self: flex-end;
 }

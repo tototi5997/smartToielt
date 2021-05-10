@@ -26,7 +26,7 @@ const HomePage = () => {
         console.log(res, 'res')
       }
     })
-  })
+  }, {})
     // barOption
     const getBarOption = () => {
       return baroption

@@ -19,8 +19,8 @@ export default class Headertop extends Component{
                 </div>
               </div>
 
-              <div className={c('fbh')} style={{marginLeft: 'auto', marginRight: 20}}>
-                <div>
+              <div className={c('fbh')} style={{marginLeft: 'auto', marginRight: 40}}>
+                <div style={{marginRight:20}}>
                   <NavLink to='/home/user'>
                     <div className={c('iconbutton')}>
                       <img

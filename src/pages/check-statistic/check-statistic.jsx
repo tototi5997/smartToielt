@@ -35,8 +35,8 @@ const CheckStatistic = () => {
       <Card
         title={<CardTitle title='考勤统计'><AreaChartOutlined /></CardTitle>}
         className={c('innerCard')}>
-          <div className={c('repair_card')}>
-            <Card className={c('repair_card_form')}>
+          <div className={c('repair_card')} style={{marginBottom: 50}}>
+            <Card className={c('repair_card_form')} style={{marginRight: 50}}>
               <ReactEChartsCore
                 echarts={echarts}
                 option={getBarOption()}

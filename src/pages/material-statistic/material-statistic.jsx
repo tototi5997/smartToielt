@@ -10,28 +10,31 @@ import ReactEChartsCore from 'echarts-for-react/lib/core'
 import {BarChart, LineChart, PieChart, RadarChart} from 'echarts/charts'
 import {GridComponent, TooltipComponent, TitleComponent, LegendComponent} from 'echarts/components'
 import {CanvasRenderer} from 'echarts/renderers'
-import pieOption from '../reapair-statistic/pie'
-import lineOption from '../reapair-statistic/lineoption'
+import {typeOption, moneyOption, countOption} from './options'
 
 echarts.use(
   [TitleComponent, TooltipComponent, PieChart, LineChart, GridComponent, BarChart, CanvasRenderer, LegendComponent, RadarChart]
 )
 const MaterialStatistic = () => {
-  // pirOption
+  // 耗材组成
   const getPieOption =() => {
-    return pieOption
+    return typeOption
   }
   // lineOption
-  const getLineOption = () => {
-    return lineOption
+  const getMoneyOption = () => {
+    return moneyOption
+  }
+  // count
+  const getCountOption = () => {
+    return countOption
   }
   return (
     <div className={c('outerdiv')}>
       <Card
         title={<CardTitle title='耗材统计'><AreaChartOutlined /></CardTitle>}
         className={c('innerCard')}>
-          <div className={c('repair_card')}>
-            <Card className={c('repair_card_form')}>
+          <div className={c('repair_card')} style={{marginBottom: 50}}>
+            <Card className={c('repair_card_form')} style={{marginRight: 50}}>
               <ReactEChartsCore
                 echarts={echarts}
                 option={getPieOption()}
@@ -43,7 +46,7 @@ const MaterialStatistic = () => {
             <Card className={c('repair_card_form')}>
               <ReactEChartsCore
                   echarts={echarts}
-                  option={getPieOption()}
+                  option={getMoneyOption()}
                   notMerge={true}
                   lazyUpdate={true}
                   theme={"theme_name"}
@@ -53,7 +56,7 @@ const MaterialStatistic = () => {
           <Card>
             <ReactEChartsCore
               echarts={echarts}
-              option={getLineOption()}
+              option={getCountOption()}
               notMerge={true}
               lazyUpdate={true}
               theme={"theme_name"}

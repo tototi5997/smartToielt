@@ -35,8 +35,9 @@ const RepairStatistic = () => {
       <Card
         title={<CardTitle title='维修统计'><AreaChartOutlined /></CardTitle>}
         className={c('innerCard')}>
-          <div className={c('repair_card')}>
-            <Card className={c('repair_card_form')}>
+
+          <div className={c('repair_card')} style={{marginBottom: 50}}>
+            <Card className={c('repair_card_form')} style={{marginRight: 50}}>
               <ReactEChartsCore
                 echarts={echarts}
                 option={getPieOption()}
@@ -45,6 +46,7 @@ const RepairStatistic = () => {
                 theme={"theme_name"}
               />
             </Card>
+
             <Card className={c('repair_card_form')}>
               <ReactEChartsCore
                   echarts={echarts}
@@ -55,6 +57,7 @@ const RepairStatistic = () => {
                 />
             </Card>
           </div>
+
           <Card>
             <ReactEChartsCore
               echarts={echarts}

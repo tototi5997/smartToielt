@@ -9,9 +9,9 @@ import './index.less'
 import '../../common/common.less'
 import PaintConfig from './mapconfig'
 import {HomeOutlined} from '@ant-design/icons'
-import Table from '../../components/table'
 import columns from './columns'
 import Axios from '../../utils/axios'
+import UiFakeTable from '../../components/ui-fake-table'
 
 const { Option } = Select
 // 接入map状态
@@ -83,10 +83,15 @@ const MapToielt = () => {
         </div>
 
         <div className={c('mt')}>
-            <Table
+            {/* <Table
               dataSource={placeInfo}
               width={'100%'}
               columns={columns}
+            /> */}
+            <UiFakeTable 
+              data={placeInfo}
+              tableColumns={columns}
+              sizeList={[25, 25, 20, 20, 10]}
             />
         </div>
       </Card>

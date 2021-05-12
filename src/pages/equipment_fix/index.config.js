@@ -11,7 +11,7 @@ const columns = [
     title: '地址',
     dataIndex: 'address',
     render(address){
-      return address = '1'?'武汉市江夏区光谷':'武汉市江夏区关山大道'
+      return address === 1?'武汉市江夏区光谷':'武汉市江夏区关山大道'
     }
   },
   {

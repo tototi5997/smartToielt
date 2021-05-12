@@ -1,6 +1,6 @@
 const columns = [
   {
-    title:'ID',
+    title:'厕所ID',
     key: 'id',
   },
   {
@@ -20,4 +20,4 @@ const columns = [
     key: 'state',
   },
 ]
-export default columns 
+export default columns

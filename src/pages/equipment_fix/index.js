@@ -14,6 +14,7 @@ class FixEquipment extends Component{
     dataSource:[],
     visible:false,
     inputValue: '',
+    dropValue: 0,
   }
   render(){
     const plainOptions = ['水龙头', '洗手池', '储水器','干手机','红外扫描仪','空气感应器'];
@@ -39,13 +40,19 @@ class FixEquipment extends Component{
             <FormItem name='id_toielt' label='公厕ID' style={{width:120}}>
               <Tooltip title='Input a number!' placement='topLeft'><Input/></Tooltip>
             </FormItem>
+
             <FormItem name='address' label='所在片区'>
-              <Select style={{width:200}} defaultValue='0'>
-                <Option value='0'>全部</Option>
-                <Option value='1'>武汉市江夏区关山大道</Option>
-                <Option value='2'>武汉市江夏区光谷</Option>
+              <Select style={{width:200}} defaultValue={0} onChange={
+                e => {
+                  this.setState({dropValue: e})
+                }
+              }>
+                <Option value={0}>全部</Option>
+                <Option value={1}>武汉市江夏区关山大道</Option>
+                <Option value={2}>武汉市江夏区光谷</Option>
               </Select>
             </FormItem>
+
             <FormItem name='respons_person' label='负责人'>
               <Input/>
             </FormItem>
@@ -60,19 +67,19 @@ class FixEquipment extends Component{
             </FormItem> */}
           </Form>
           <Table
-          columns={columns}
-          dataSource={this.state.dataSource}
-          rowSelection={rowSelection}
-          onRow={(record,index)=>{
-            return{
-              onClick:()=>{
-                  this.setState({
-                    selectedRowKeys:[index],
-                    selectedRows:record
-                  })
+            columns={columns}
+            dataSource={this.state.dataSource}
+            rowSelection={rowSelection}
+            onRow={(record,index)=>{
+              return{
+                onClick:()=>{
+                    this.setState({
+                      selectedRowKeys:[index],
+                      selectedRows:record
+                    })
+                  }
                 }
-              }
-          }}
+            }}
           />
         </Card>
         <Modal
@@ -127,18 +134,38 @@ class FixEquipment extends Component{
   }
   //获取数据
   handleGetData=()=>{
-    Axios.ajax({
-      url:'/equipment_fix'
-    }).then((res,rej)=>{
-      if(res.code === 0){
-        this.setState({
-            dataSource:res.result.list.map((item,index)=>{
-            item.key = index;
-            return item;
+    const dropKey = this.state.dropValue
+    console.log(dropKey, 'drop')
+    if (dropKey === 0) {
+      Axios.ajax({
+        url:'/equipment_fix'
+      }).then((res,rej)=>{
+        if(res.code === 0){
+          this.setState({
+              dataSource:res.result.list.map((item,index)=>{
+              item.key = index;
+              return item;
+            })
           })
-        })
-      }else{console.log(rej)}
-    })
+        }else{console.log(rej)}
+      })
+    }
+    // 关山大道
+    else if (dropKey === 1) {
+      console.log('查询关山')
+      Axios.ajax({
+        url:'/equipment_fix_guanshan'
+      }).then((res,rej)=>{
+        if(res.code === 0){
+          this.setState({
+              dataSource:res.result.list.map((item,index)=>{
+              item.key = index;
+              return item;
+            })
+          })
+        }else{console.log(rej)}
+      })
+    }
   }
   //设备保修显示模态框
   handleShowModal=()=>{

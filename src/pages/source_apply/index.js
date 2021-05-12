@@ -7,7 +7,7 @@ import '../../common/common.less'
 import './apply.less'
 import CardTitle from '../../components/card-title'
 import {ToolOutlined, FileMarkdownOutlined, SearchOutlined} from '@ant-design/icons'
-import DesignTable from '../../components/table'
+import UiFakeTable from '../../components/ui-fake-table'
 import data from '../../components/table/data'
 import columns from '../../components/table/columns';
 
@@ -108,10 +108,15 @@ class SourceApply extends React.Component{
                       <SearchOutlined />
                     </Button>
                     <div className={c('infoform')}>
-                      <DesignTable
+                      {/* <DesignTable
                         columns={columns}
                         dataSource={this.state.dataSource}
-                        width={'100%'}/>
+                        width={'100%'}/> */}
+                        <UiFakeTable 
+                          tableColumns={columns}
+                          data={this.state.dataSource}
+                          sizeList={[15, 15, 25, 25, 10, 10]}
+                        />
                     </div>
                 </Card>
             </div>
